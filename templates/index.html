@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Recommender System</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Job Recommender System</h1>
+    <form action="/recommend" method="post">
+        <br> Enter your top programming skills, separated by spaces only. <br>
+        <label for="user_input">(min 1/max 5)</label><br>
+        <input type="text" id="user_input" name="user_input"><br>
+        <input type="submit" value="Recommend Jobs">
+    </form>
+</body>
+</html>

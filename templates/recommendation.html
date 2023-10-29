@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Recommendations</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>User input: {{ user_input }}</h2>
+    <h3>Recommended Jobs:</h3>
+    <ul>
+        {% for job in recommended_jobs %}
+            <li>{{ job }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
