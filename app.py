@@ -5,14 +5,18 @@ import pandas as pd
 from transformers import BertTokenizer, BertModel
 import torch
 import pandas as pd
+import pickle
+
 
 app = Flask(__name__)
+
 df = pd.read_csv('jobs.csv')
 job_listings = df.to_dict(orient='records')
 user_profile = {
     "skills": []
 }
 k = 5 
+
 class ABCRecommendations:
     def __init__(self, user_profile, job_listings, k):
         self.user_profile = user_profile
@@ -101,6 +105,15 @@ class ABCRecommendations:
 
         return best_solution, best_similarity
 
+    def save_recommendations(self, filename):
+        with open(filename, 'wb') as file:
+            pickle.dump(self, file)
+
+    @staticmethod
+    def load_recommendations(filename):
+        with open(filename, 'rb') as file:
+            return pickle.load(file)
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -108,10 +121,16 @@ def index():
 @app.route('/recommend', methods=['POST'])
 def get_recommendation():
     if request.method == 'POST':
+
         user_input = request.form['user_input']
         user_profile['skills'] = user_input.split()
+
         recommendation_system = ABCRecommendations(user_profile, job_listings, k)
-        recommended_jobs = recommendation_system.recommend_jobs()
+        recommendation_system.save_recommendations('recommendations.pkl')
+
+        loaded_recommendations = ABCRecommendations.load_recommendations('recommendations.pkl')
+        recommended_jobs = loaded_recommendations.recommend_jobs()
+        
         return render_template('recommendation.html', user_input=user_input, recommended_jobs=recommended_jobs)
 
 if __name__ == '__main__':
