@@ -5,12 +5,14 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Job Recommender System</h1>
-    <form action="/recommend" method="post">
-        <br> Enter your top programming skills, separated by spaces only. <br>
-        <label for="user_input">(min 1/max 5)</label><br>
-        <input type="text" id="user_input" name="user_input"><br>
-        <input type="submit" value="Recommend Jobs">
+    <h1 style="text-align: center;">Welcome to the Job Recommender System</h1>
+    <form action="/recommend" method="post" style="text-align: center; font-size: 120%; padding-left: 35%; padding-right: 35%; border:2%; border-color: black;">
+        <br> Please enter your top programming skills, separated by spaces only. <br>
+        <br>
+        <hr>
+        <!-- <label for="user_input" style="font-size: 70%;">(min 1/max 5)</label><br> -->
+        <input type="text" id="user_input" name="user_input" style = "font-size: 18px; margin: 5%;" placeholder = "Please mention 1-5 skills"><br>
+        <input type="submit" value="Recommend Jobs" style=" margin: 10%; padding:2%; color: aliceblue; background-color: rgb(48, 24, 205);font-size: 15px; border-radius: 8%; ">
     </form>
 </body>
 </html>
