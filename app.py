@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import random
-import torch
 import numpy as np
 import pandas as pd
 from transformers import BertTokenizer, BertModel
@@ -12,6 +11,7 @@ user_profile = {
     "skills": []
 }
 k = 5 
+
 class ABCRecommendations:
     def __init__(self, user_profile, job_listings, k):
         self.user_profile = user_profile
