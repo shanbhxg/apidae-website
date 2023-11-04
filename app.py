@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import random
+import torch
 import numpy as np
 import pandas as pd
 from transformers import BertTokenizer, BertModel
