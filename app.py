@@ -3,11 +3,10 @@ import random
 import numpy as np
 import pandas as pd
 from transformers import BertTokenizer, BertModel
-import torch
 import pandas as pd
 
 app = Flask(__name__)
-df = pd.read_csv('jobs.csv')
+df = pd.read_csv('job.csv')
 job_listings = df.to_dict(orient='records')
 user_profile = {
     "skills": []
