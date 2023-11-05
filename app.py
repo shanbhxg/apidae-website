@@ -3,8 +3,6 @@ import random
 import numpy as np
 import pandas as pd
 from transformers import BertTokenizer, BertModel
-import torch
-import pandas as pd
 
 app = Flask(__name__)
 df = pd.read_csv('job.csv')
@@ -13,6 +11,7 @@ user_profile = {
     "skills": []
 }
 k = 5 
+
 class ABCRecommendations:
     def __init__(self, user_profile, job_listings, k):
         self.user_profile = user_profile

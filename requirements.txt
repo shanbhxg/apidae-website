@@ -1,5 +1,2 @@
-flask
-transformers
-torch
-pandas
-numpy
+flask==1.1.4
+transformers==4.3.3
