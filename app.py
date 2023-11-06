@@ -53,13 +53,10 @@ class ABCRecommendations:
       r.sort(key=lambda item: item[1], reverse=True)
       print("Top", self.k, "matching jobs:")
       for i, (job_info, similarity) in enumerate(r):  # Use enumerate to get both index and job_info
-          print(f"Job {i + 1}:")
-          print("Title:", job_info["designation"])
-          print("Skills:", job_info["skills"])
-          print("Location:", job_info["City"])
-          print("Similarity:", similarity)
-          # print("Upskill:", job_info["upskill"])
-
+        ans = {}
+        ans['job_title'] = job_info['job_title']
+        ans['similarity'] = similarity
+        self.ans[i] = ans
 
     def recommend_jobs(self, num_employed_bees=50, num_onlooker_bees=50, num_cycles=20, scout_limit=50):
         user_skill_embeddings = self.calculate_bert_embeddings(" ".join(self.user_profile["skills"]))
@@ -113,7 +110,7 @@ def get_recommendation():
         recommendation_system = ABCRecommendations(user_profile, job_listings, k)
         recommended_jobs = recommendation_system.recommend_jobs()
         recommendation_system.recommend()
-        return render_template('recommendation.html', user_input=user_input, recommended_jobs=recommended_jobs)
+        return render_template('recommendation.html', user_input=user_input, recommended_jobs=recommended_jobs, ans=recommendation_system.ans)
 
 if __name__ == '__main__':
     app.run(debug=True)
