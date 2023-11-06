@@ -3,6 +3,7 @@ import random
 import numpy as np
 import pandas as pd
 from transformers import BertTokenizer, BertModel
+import torch
 
 app = Flask(__name__)
 df = pd.read_csv('job.csv')
