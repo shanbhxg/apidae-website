@@ -9,7 +9,12 @@
     <h3>Recommended Jobs:</h3>
     <ul>
         {% for job in recommended_jobs %}
-            <li>{{ job[0] }}</li>
+            <li>
+                <h4>{{ job.designation }}</h4>
+                <p>Skills: {{ job.skills }}</p>
+                <p>Location: {{ job.City }}, {{ job.State }}</p>
+                <p>Similarity: {{ job.similarity }}</p>
+            </li>
         {% endfor %}
     </ul>
 </body>
