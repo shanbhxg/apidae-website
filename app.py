@@ -112,6 +112,7 @@ def get_recommendation():
         user_profile['skills'] = user_input.split()
         recommendation_system = ABCRecommendations(user_profile, job_listings, k)
         recommended_jobs = recommendation_system.recommend_jobs()
+        recommendation_system.recommend()
         return render_template('recommendation.html', user_input=user_input, recommended_jobs=recommended_jobs)
 
 if __name__ == '__main__':
