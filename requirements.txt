@@ -1,5 +1,5 @@
-flask==1.1.4
-transformers==4.3.3
+flask
+transformers
 torch
 Gunicorn
 markupsafe==2.0.1
