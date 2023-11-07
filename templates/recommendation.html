@@ -8,8 +8,10 @@
     <h2>User input: {{ user_input }}</h2>
     <h3>Recommended Jobs:</h3>
     <ul>
-        {% for job in recommended_jobs %}
-            <li>{{ job[0] }} - {{ job[1] }}</li>
+        {% for key, value in job_details.items() %}
+            <li>
+                <strong>{{ key }}:</strong> {{ value }}
+            </li>
         {% endfor %}
     </ul>
 </body>
